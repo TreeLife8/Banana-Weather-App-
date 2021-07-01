@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banana Weather</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <form class="search">
+        <div class="row topLine">
+          <div class="col-4 columns">
+            <input
+              type="text"
+              name="search"
+              class="form-control"
+              id="search-location"
+              placeholder="Enter a city..."
+              autofocus="on"
+            />
+          </div>
+          <div class="col-2 columns">
+            <input
+              type="submit"
+              name="submit"
+              id="submit"
+              class="form-control searchButton"
+            />
+          </div>
+          <div class="col-2 columns">
+            <button class="current" id="current">Current</button>
+          </div>
+          <div class="col-2 columns" id="current-weather-icon">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              alt="Current Weather Icon"
+              class="currentWeatherIcon"
+            />
+          </div>
+        </div>
+      </form>
+      <div class="row secondLine">
+        <div class="col-5">
+          <ul>
+            <li>
+              <h6 class="day" id="day">
+                <strong>Wednesday</strong>
+                <span class="time" id="time">12:00</span>
+              </h6>
+            </li>
+            <li class="date">29/06/2021</li>
+          </ul>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-4">
+          <ul class="conditions">
+            <li class="maxTemp">Max Temp: <span id="max-temp">25</span>°C</li>
+            <li class="minTemp">Min Temp: <span id="min-temp">12</span>°C</li>
+            <li class="sunRise">
+              ⬆<span class="sun">☀ </span>Sunrise:
+              <span id="sun-rise">07:00</span>
+            </li>
+            <li class="sunSet">
+              ⬇<span class="sun">☀ </span> Sunset:
+              <span id="sun-set">20:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <h1 class="city" id="city">Sydney</h1>
+      <h3 class="forcast" id="forcast">Clear Skys</h3>
+      <h1 class="currentTemp" id="current-temp">
+        11
+        <span class="degrees" id="celcius">°C | </span
+        ><span class="degrees" id="fehren">°F</span>
+      </h1>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="Basic radio toggle button group"
+          >
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio1"
+            />
+            <label class="btn btn-outline-secondary" for="btnradio1"
+              >HUMIDITY
+              <div class="humidity" id="humidity">58%</div></label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio2"
+            />
+            <label class="btn btn-outline-secondary" for="btnradio2"
+              >FEELS LIKE
+              <div class="feelsLike" id="feels-like">12°C</div></label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="btnradio"
+              id="btnradio3"
+            />
+            <label class="btn btn-outline-secondary" for="btnradio3"
+              >WINDSPEED
+              <div class="windspeed" id="windspeed">12 km/h</div></label
+            >
+          </div>
+        </div>
+        <div class="col-1"></div>
+      </div>
+      <hr class="divider" />
+      <div class="row lastLine">
+        <div class="col-1"></div>
+        <div class="col-2 dayOne weekForcast">
+          <div id="day-one-temp">20°C</div>
+          <div id="day-one-icon">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+              alt=""
+            />
+          </div>
+          <div id="day-one-day">THU</div>
+        </div>
+        <div class="col-2 dayTwo weekForcast">
+          <div id="day-two-temp">20°C</div>
+          <div id="day-two-icon">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+              alt=""
+            />
+          </div>
+          <div id="day-two-day">FRI</div>
+        </div>
+        <div class="col-2 dayThree weekForcast">
+          <div id="day-three-temp">20°C</div>
+          <div id="day-three-icon">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/48/rain_light.png"
+              alt=""
+            />
+          </div>
+          <div id="day-three-day">SAT</div>
+        </div>
+        <div class="col-2 dayFour weekForcast">
+          <div id="day-four-temp">20°C</div>
+          <div id="day-four-icon">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+              alt=""
+            />
+          </div>
+          <div id="day-four-day">SUN</div>
+        </div>
+        <div class="col-2 dayFive weekForcast">
+          <div id="day-five-temp">20°C</div>
+          <div id="day-five-icon">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/48/sunny.png"
+              alt=""
+            />
+          </div>
+          <div id="day-five-day">MON</div>
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </div>
+    <link rel="stylesheet" href="scr/style.css" />
+  </body>
+</html>

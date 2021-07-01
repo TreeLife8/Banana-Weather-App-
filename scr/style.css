@@ -1,0 +1,126 @@
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+h3 {
+  text-align: center;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 12px;
+}
+h6 {
+  font-size: 12px;
+}
+li {
+  line-height: 1.5;
+}
+.container {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  border-radius: 6px;
+  max-width: 400px;
+  margin: 15px auto;
+  border: rgba(135, 135, 135, 0.5) 0.5px solid;
+  box-shadow: 3px 3px 10px rgba(135, 135, 135, 0.4);
+  color: rgb(135, 135, 135);
+}
+.topLine {
+  margin: 15px auto 5px;
+  max-height: 60px;
+}
+.columns {
+  padding: 0;
+  margin: 5px;
+}
+.form-control {
+  font-size: 12px;
+  color: rgb(135, 135, 135);
+}
+.current {
+  font-size: 12px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+  padding: 6px 12px;
+  color: rgb(135, 135, 135);
+  transition: ease-in-out all 200ms;
+}
+.current:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253/25%);
+}
+.current:hover {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgb(13 110 253/25%);
+  cursor: pointer;
+}
+.searchButton:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253/25%);
+}
+.searchButton:hover {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgb(13 110 253/25%);
+  cursor: pointer;
+}
+.currentWeatherIcon {
+  padding-left: 10px;
+  margin-left: 5px;
+  position: relative;
+  top: -10px;
+}
+.degrees {
+  font-size: 12px;
+  position: relative;
+  top: -15px;
+}
+.day {
+  padding-left: 5px;
+  margin-bottom: 2px;
+  font-size: 15px;
+}
+.date {
+  padding-left: 5px;
+}
+.conditions {
+  text-align: right;
+  padding-right: 5px;
+  font-size: 10px;
+}
+.sun {
+  color: #ffd738;
+  font-size: 12px;
+}
+.sunRise {
+  padding-top: 4px;
+}
+.btn-group {
+  display: block;
+  margin: 15px auto;
+}
+.btn {
+  font-size: 13px;
+  background-color: rgba(108, 117, 125, 0.8);
+  box-shadow: 3px 3px 10px rgba(135, 135, 135, 0.4);
+  color: white;
+}
+.divider {
+  max-width: 80%;
+  margin: 16px auto;
+}
+.weekForcast {
+  text-align: center;
+}
+.lastLine {
+  margin-bottom: 20px;
+}
