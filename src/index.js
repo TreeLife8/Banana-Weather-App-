@@ -5,6 +5,10 @@ function formatDate(timeStamp) {
   let minutes = time.getMinutes();
   let hours = time.getHours();
 
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -162,8 +166,6 @@ document
 // WEATHER DATA
 
 function showWeather(response) {
-  console.log(response.data);
-
   // CITY NAME
   let city = response.data.name;
   document.querySelector("#city").innerHTML = `${city}`;
