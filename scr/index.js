@@ -47,6 +47,57 @@ function formatDate(time) {
 
 formatDate(new Date());
 
+// WEEK FORCAST DAYS
+
+let time = new Date();
+
+let shortDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+let dayOne = time.getDay() + 1;
+if (dayOne > 6) {
+  document.querySelector("#day-one-day").innerHTML =
+    shortDays[time.getDay() - 6];
+} else {
+  document.querySelector("#day-one-day").innerHTML =
+    shortDays[time.getDay() + 1];
+}
+
+let dayTwo = time.getDay() + 2;
+if (dayTwo > 6) {
+  document.querySelector("#day-two-day").innerHTML =
+    shortDays[time.getDay() - 5];
+} else {
+  document.querySelector("#day-two-day").innerHTML =
+    shortDays[time.getDay() + 2];
+}
+
+let dayThree = time.getDay() + 3;
+if (dayThree > 6) {
+  document.querySelector("#day-three-day").innerHTML =
+    shortDays[time.getDay() - 4];
+} else {
+  document.querySelector("#day-three-day").innerHTML =
+    shortDays[time.getDay() + 3];
+}
+
+let dayFour = time.getDay() + 4;
+if (dayFour > 6) {
+  document.querySelector("#day-four-day").innerHTML =
+    shortDays[time.getDay() - 3];
+} else {
+  document.querySelector("#day-four-day").innerHTML =
+    shortDays[time.getDay() + 4];
+}
+
+let dayFive = time.getDay() + 5;
+if (dayFive > 6) {
+  document.querySelector("#day-five-day").innerHTML =
+    shortDays[time.getDay() - 2];
+} else {
+  document.querySelector("#day-five-day").innerHTML =
+    shortDays[time.getDay() + 5];
+}
+
 // SEARCH LOCATION
 
 function searchCity(event) {
@@ -74,3 +125,5 @@ function searchCurrentLocation() {
 document
   .querySelector("#current")
   .addEventListener("click", searchCurrentLocation);
+
+// WEATHER DATA
