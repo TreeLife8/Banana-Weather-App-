@@ -43,3 +43,15 @@ function formatDate(time) {
 }
 
 formatDate(new Date());
+
+// SEARCH
+
+function searchCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-location").value;
+  console.log(city);
+  document.querySelector("#city").innerHTML = `${city}`;
+}
+
+let search = document.querySelector("#search-city-form");
+search.addEventListener("submit", searchCity);
