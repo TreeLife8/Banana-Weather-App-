@@ -15,38 +15,42 @@
   </head>
   <body>
     <div class="container">
-      <form class="search" id="search-city-form">
-        <div class="row topLine">
-          <div class="col-4 columns">
-            <input
-              type="text"
-              name="search"
-              class="form-control"
-              id="search-location"
-              placeholder="Enter a city..."
-              autofocus="on"
-            />
-          </div>
-          <div class="col-2 columns">
-            <input
-              type="submit"
-              name="submit"
-              id="submit"
-              class="form-control searchButton"
-            />
-          </div>
-          <div class="col-2 columns">
-            <button class="current" id="current">Current</button>
-          </div>
-          <div class="col-2 columns" id="current-weather-icon">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="Current Weather Icon"
-              class="currentWeatherIcon"
-            />
-          </div>
+      <div class="row topLine">
+        <div class="col-7">
+          <form class="search" id="search-city-form">
+            <div class="row">
+              <div class="col-6 columns">
+                <input
+                  type="text"
+                  name="search"
+                  class="form-control"
+                  id="search-location"
+                  placeholder="Enter a city..."
+                  autofocus="on"
+                />
+              </div>
+              <div class="col-4 columns">
+                <input
+                  type="submit"
+                  name="submit"
+                  id="submit"
+                  class="form-control searchButton"
+                />
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
+        <div class="col-2 columns">
+          <button class="current" id="current">Current</button>
+        </div>
+        <div class="col-2 columns" id="current-weather-icon">
+          <img
+            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+            alt="Current Weather Icon"
+            class="currentWeatherIcon"
+          />
+        </div>
+      </div>
       <div class="row secondLine">
         <div class="col-5">
           <ul>

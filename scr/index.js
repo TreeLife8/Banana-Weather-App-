@@ -4,6 +4,9 @@ function formatDate(time) {
   let minutes = time.getMinutes();
   let hours = time.getHours();
 
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let currentTime = `${hours}:${minutes}`;
   let days = [
     "Sunday",
@@ -44,14 +47,30 @@ function formatDate(time) {
 
 formatDate(new Date());
 
-// SEARCH
+// SEARCH LOCATION
 
 function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#search-location").value;
-  console.log(city);
   document.querySelector("#city").innerHTML = `${city}`;
 }
 
-let search = document.querySelector("#search-city-form");
-search.addEventListener("submit", searchCity);
+document
+  .querySelector("#search-city-form")
+  .addEventListener("submit", searchCity);
+
+// CURRENT LOCATION
+
+function currentPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  console.log(lon);
+}
+
+function searchCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(currentPosition);
+}
+
+document
+  .querySelector("#current")
+  .addEventListener("click", searchCurrentLocation);
