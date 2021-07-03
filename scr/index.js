@@ -116,7 +116,10 @@ document
 function currentPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  console.log(lon);
+  let unit = `metric`;
+  let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
 }
 
 function searchCurrentLocation() {
@@ -144,7 +147,60 @@ function showWeather(response) {
     response.data.weather[0].description;
 
   // MIN & MAX TEMPS
+
+  document.querySelector("#min-temp").innerHTML = Math.round(
+    response.data.main.temp_min
+  );
+  document.querySelector("#max-temp").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
+
+  // CONDITIONS
+
+  document.querySelector("#humidity").innerHTML = `${Math.round(
+    response.data.main.humidity
+  )} %`;
+  document.querySelector("#feels-like").innerHTML = `${Math.round(
+    response.data.main.feels_like
+  )} °C`;
+  document.querySelector("#windspeed").innerHTML = `${Math.round(
+    response.data.wind.speed
+  )} km/h`;
+
+  //  SUN TIMES
+
+  console.log(new Date(response.data.sys.sunrise).toUTCString());
+  let secRiseHour = response.data.sys.sunrise;
+  let dateSunRise = new Date(secRiseHour * 1000);
+
+  let sunRiseH = dateSunRise.getHours();
+
+  let secRiseMin = response.data.sys.sunrise;
+  let minSunRise = new Date(secRiseMin * 1000);
+  let sunRiseM = minSunRise.getHours();
+
+  if (sunRiseM > 10) {
+    document.querySelector("#sun-rise").innerHTML = `0${sunRiseH}:${sunRiseM}`;
+  } else {
+    document.querySelector("#sun-rise").innerHTML = `0${sunRiseH}:0${sunRiseM}`;
+  }
+
+  let secSetHour = response.data.sys.sunset;
+  let dateSunSet = new Date(secSetHour * 1000);
+  let sunSeteH = dateSunSet.getHours();
+
+  let secSetMin = response.data.sys.sunset;
+  let minSunSet = new Date(secSetMin * 1000);
+  let sunSetM = minSunSet.getHours();
+
+  if (sunSetM > 10) {
+    document.querySelector("#sun-set").innerHTML = `${sunSeteH}:${sunSetM}`;
+  } else {
+    document.querySelector("#sun-set").innerHTML = `${sunSeteH}:0${sunSetM}`;
+  }
 }
+
+// AXIOS SEARCH FUNCTION
 
 function search(city) {
   let unit = `metric`;
