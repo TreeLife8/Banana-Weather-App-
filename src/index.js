@@ -180,7 +180,7 @@ function showWeather(response) {
 
   // ICON
   let icon = response.data.weather[0].icon;
-  let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   document.querySelector("#current-icon").setAttribute("src", iconUrl);
   console.log(iconUrl);
   document
