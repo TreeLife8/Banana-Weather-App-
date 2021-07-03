@@ -11,10 +11,11 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="scr/style.css" />
   </head>
   <body>
     <div class="container">
-      <form class="search">
+      <form class="search" id="search-city-form">
         <div class="row topLine">
           <div class="col-4 columns">
             <input
@@ -50,12 +51,9 @@
         <div class="col-5">
           <ul>
             <li>
-              <h6 class="day" id="day">
-                <strong>Wednesday</strong>
-                <span class="time" id="time">12:00</span>
-              </h6>
+              <h6 class="dayTime" id="day-time"></h6>
             </li>
-            <li class="date">29/06/2021</li>
+            <li class="date" id="date"></li>
           </ul>
         </div>
         <div class="col-3"></div>
@@ -181,6 +179,6 @@
         <div class="col-1"></div>
       </div>
     </div>
-    <link rel="stylesheet" href="scr/style.css" />
+    <script src="scr/index.js"></script>
   </body>
 </html>

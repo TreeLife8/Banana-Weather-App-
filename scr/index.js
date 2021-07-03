@@ -1,7 +1,45 @@
 // DATE AND TIME
 
-let date = new Date();
+function formatDate(time) {
+  let minutes = time.getMinutes();
+  let hours = time.getHours();
 
-let minutes = get.Date(minutes);
+  let currentTime = `${hours}:${minutes}`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[time.getDay()];
 
-console.log(minutes);
+  document.querySelector(
+    "#day-time"
+  ).innerHTML = `<strong>${day}</strong> ${currentTime}`;
+
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[time.getMonth()];
+  let date = time.getDate();
+  let year = time.getFullYear();
+  let currentDate = `${date} ${month} ${year}`;
+
+  document.querySelector("#date").innerHTML = `${currentDate}`;
+}
+
+formatDate(new Date());
