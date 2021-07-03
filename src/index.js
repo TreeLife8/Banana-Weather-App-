@@ -1,6 +1,7 @@
 // DATE AND TIME
 
-function formatDate(time) {
+function formatDate(timeStamp) {
+  let time = new Date(timeStamp);
   let minutes = time.getMinutes();
   let hours = time.getHours();
 
@@ -45,13 +46,10 @@ function formatDate(time) {
   document.querySelector("#date").innerHTML = `${currentDate}`;
 }
 
-formatDate(new Date());
-
 // FORMAT BACKGROUND COLOUR
 
 function changeBackground(time) {
   let hours = time.getHours();
-  console.log(hours);
   if (hours > 5 && hours < 7) {
     document.body.style.background =
       "linear-gradient(90.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%)";
@@ -197,6 +195,10 @@ function showWeather(response) {
   document.querySelector("#windspeed").innerHTML = `${Math.round(
     response.data.wind.speed
   )} km/h`;
+
+  // LAST UPDATED
+
+  formatDate(response.data.dt * 1000);
 
   //  SUN TIMES
 
