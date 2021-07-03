@@ -167,18 +167,27 @@ document
 
 function showWeather(response) {
   // CITY NAME
+  console.log(response.data);
   let city = response.data.name;
   document.querySelector("#city").innerHTML = `${city}`;
 
-  // CURRENT FORECAST
+  // CURRENT FORECAST DISCRIPTION
   document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.main.temp
   );
   document.querySelector("#forcast").innerHTML =
     response.data.weather[0].description;
 
-  // MIN & MAX TEMPS
+  // ICON
+  let icon = response.data.weather[0].icon;
+  let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  document.querySelector("#current-icon").setAttribute("src", iconUrl);
+  console.log(iconUrl);
+  document
+    .querySelector("#current-icon")
+    .setAttribute("alt", response.data.weather[0].description);
 
+  // MIN & MAX TEMPS
   document.querySelector("#min-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
@@ -187,7 +196,6 @@ function showWeather(response) {
   );
 
   // CONDITIONS
-
   document.querySelector("#humidity").innerHTML = `${Math.round(
     response.data.main.humidity
   )} %`;
@@ -199,11 +207,9 @@ function showWeather(response) {
   )} km/h`;
 
   // LAST UPDATED
-
   formatDate(response.data.dt * 1000);
 
   //  SUN TIMES
-
   console.log(new Date(response.data.sys.sunrise).toUTCString());
   let secRiseHour = response.data.sys.sunrise;
   let dateSunRise = new Date(secRiseHour * 1000);
@@ -236,7 +242,6 @@ function showWeather(response) {
 }
 
 // AXIOS SEARCH FUNCTION
-
 function search(city) {
   let unit = `metric`;
   let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
