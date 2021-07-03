@@ -88,18 +88,24 @@ li {
   padding-left: 5px;
   margin-bottom: 2px;
   font-size: 15px;
+  font-family: "Roboto", sans-serif;
 }
 .date {
   padding-left: 5px;
+  font-family: "Roboto", sans-serif;
 }
 .conditions {
   text-align: right;
   padding-right: 5px;
   font-size: 10px;
+  font-family: "Roboto", sans-serif;
 }
 .sun {
   color: #ffd738;
   font-size: 12px;
+}
+.arrow {
+  font-size: 13px;
 }
 .sunRise {
   padding-top: 4px;
@@ -123,4 +129,8 @@ li {
 }
 .lastLine {
   margin-bottom: 20px;
+}
+.gitHubLink {
+  text-align: center;
+  font-size: 12px;
 }

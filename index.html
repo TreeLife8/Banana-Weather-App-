@@ -11,6 +11,12 @@
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="scr/style.css" />
   </head>
@@ -67,11 +73,11 @@
             <li class="maxTemp">Max Temp: <span id="max-temp"></span>°C</li>
             <li class="minTemp">Min Temp: <span id="min-temp"></span>°C</li>
             <li class="sunRise">
-              ⬆<span class="sun">☀ </span>Sunrise:
+              <span class="arrow">⬆</span><span class="sun">☀ </span>Sunrise:
               <span id="sun-rise"></span>
             </li>
             <li class="sunSet">
-              ⬇<span class="sun">☀ </span> Sunset:
+              <span class="arrow">⬇</span><span class="sun">☀ </span> Sunset:
               <span id="sun-set"></span>
             </li>
           </ul>
@@ -183,6 +189,12 @@
         </div>
         <div class="col-1"></div>
       </div>
+    </div>
+    <div class="gitHubLink">
+      <a href="https://github.com/TreeLife8/Banana-Weather-App-" target="_blank"
+        >Open-source code</a
+      >
+      by Regina Maher
     </div>
     <script src="scr/index.js"></script>
   </body>
