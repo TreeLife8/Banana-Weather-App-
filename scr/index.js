@@ -104,6 +104,7 @@ function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#search-location").value;
   document.querySelector("#city").innerHTML = `${city}`;
+  search(city);
 }
 
 document
@@ -127,3 +128,29 @@ document
   .addEventListener("click", searchCurrentLocation);
 
 // WEATHER DATA
+
+function showWeather(response) {
+  console.log(response.data);
+
+  // CITY NAME
+  let city = response.data.name;
+  document.querySelector("#city").innerHTML = `${city}`;
+
+  // CURRENT FORECAST
+  document.querySelector("#current-temp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#forcast").innerHTML =
+    response.data.weather[0].description;
+
+  // MIN & MAX TEMPS
+}
+
+function search(city) {
+  let unit = `metric`;
+  let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+search("Sydney");
