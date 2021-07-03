@@ -67,10 +67,12 @@ function changeBackground(time) {
   if (hours > 19 && hours <= 24) {
     document.body.style.background =
       "linear-gradient(270deg, #09203f 0%, #537895 100%)";
+    document.querySelector("#gitHubLink").style.color = "white";
   }
   if (hours > 0 && hours <= 5) {
     document.body.style.background =
       "linear-gradient(90deg, #09203f 0%, #537895 100%)";
+    document.querySelector("#gitHubLink").style.color = "white";
   }
 }
 
