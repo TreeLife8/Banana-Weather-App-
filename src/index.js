@@ -47,6 +47,35 @@ function formatDate(time) {
 
 formatDate(new Date());
 
+// FORMAT BACKGROUND COLOUR
+
+function changeBackground(time) {
+  let hours = time.getHours();
+  console.log(hours);
+  if (hours > 5 && hours < 7) {
+    document.body.style.background =
+      "linear-gradient(90.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%)";
+  }
+  if (hours > 7 && hours < 10) {
+    document.body.style.background =
+      "linear-gradient(90.1deg, rgb(167, 220, 225) 11.2%, rgb(217, 239, 242) 88.9%)";
+  }
+  if (hours > 17 && hours < 20) {
+    document.body.style.background =
+      "linear-gradient(270.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%)";
+  }
+  if (hours > 19 && hours <= 24) {
+    document.body.style.background =
+      "linear-gradient(270deg, #09203f 0%, #537895 100%)";
+  }
+  if (hours > 0 && hours <= 5) {
+    document.body.style.background =
+      "linear-gradient(90deg, #09203f 0%, #537895 100%)";
+  }
+}
+
+changeBackground(new Date());
+
 // WEEK FORCAST DAYS
 
 let time = new Date();
