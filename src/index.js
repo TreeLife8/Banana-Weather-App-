@@ -54,7 +54,7 @@ function formatDate(timeStamp) {
 
 function changeBackground(time) {
   let hours = time.getHours();
-  if (hours > 5 && hours < 7) {
+  if (hours > 5 && hours <= 7) {
     document.body.style.background =
       "linear-gradient(90.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%)";
   }
