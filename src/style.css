@@ -6,7 +6,6 @@ h3 {
   text-align: center;
   font-size: 15px;
   font-weight: 300;
-  text-transform: capitalize;
 }
 ul {
   list-style-type: none;
@@ -25,6 +24,7 @@ body {
 }
 a {
   color: #86b7fe;
+  text-decoration: none;
 }
 .container {
   font-family: Arial, Helvetica, sans-serif;
@@ -61,6 +61,9 @@ a {
   transition: ease-in-out all 200ms;
   font-family: "Roboto", sans-serif;
 }
+.forcast:first-letter {
+  text-transform: capitalize;
+}
 .current:focus {
   border-color: #86b7fe;
   outline: 0;
@@ -93,6 +96,11 @@ a {
   position: relative;
   top: -15px;
 }
+.degrees.active {
+  color: rgb(135, 135, 135);
+  cursor: default;
+}
+
 .lastUpdate {
   padding-left: 5px;
   padding-bottom: 5px;

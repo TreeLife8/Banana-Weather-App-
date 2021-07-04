@@ -172,9 +172,10 @@ function showWeather(response) {
   document.querySelector("#city").innerHTML = `${city}`;
 
   // CURRENT FORECAST DISCRIPTION
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+
+  celciusTemp = response.data.main.temp;
+
+  document.querySelector("#current-temp").innerHTML = Math.round(celciusTemp);
   document.querySelector("#forcast").innerHTML =
     response.data.weather[0].description;
 
@@ -182,7 +183,6 @@ function showWeather(response) {
   let icon = response.data.weather[0].icon;
   let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   document.querySelector("#current-icon").setAttribute("src", iconUrl);
-  console.log(iconUrl);
   document
     .querySelector("#current-icon")
     .setAttribute("alt", response.data.weather[0].description);
@@ -249,3 +249,29 @@ function search(city) {
   axios.get(apiUrl).then(showWeather);
 }
 search("Sydney");
+
+// UNIT CONVERSION
+
+function convertUnitFehren(event) {
+  event.preventDefault();
+  document.querySelector("#current-temp").innerHTML = Math.round(
+    (celciusTemp * 9) / 5 + 32
+  );
+  celcius.classList.remove("active");
+  fehren.classList.add("active");
+}
+
+function convertUnitCelcius(event) {
+  event.preventDefault();
+  document.querySelector("#current-temp").innerHTML = Math.round(celciusTemp);
+  fehren.classList.remove("active");
+  celcius.classList.add("active");
+}
+
+let celciusTemp = null;
+
+let fehren = document.querySelector("#fehren");
+fehren.addEventListener("click", convertUnitFehren);
+
+let celcius = document.querySelector("#celcius");
+celcius.addEventListener("click", convertUnitCelcius);
