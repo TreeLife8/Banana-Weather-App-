@@ -62,7 +62,7 @@ function changeBackground(time) {
     document.body.style.background =
       "linear-gradient(90.1deg, rgb(167, 220, 225) 11.2%, rgb(217, 239, 242) 88.9%)";
   }
-  if (hours >= 17 && hours < 20) {
+  if (hours >= 17 && hours <= 19) {
     document.body.style.background =
       "linear-gradient(270.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%)";
   }
@@ -76,6 +76,16 @@ function changeBackground(time) {
       "linear-gradient(90deg, #09203f 0%, #537895 100%)";
     document.querySelector("#gitHubLink").style.color = "white";
   }
+}
+
+//  FORECAST DATA
+
+function getForecast(coordinates) {
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
+  let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 // WEATHER DATA
@@ -148,6 +158,8 @@ function showWeather(response) {
   } else {
     document.querySelector("#sun-set").innerHTML = `${sunSeteH}:0${sunSetM}`;
   }
+
+  getForecast(response.data.coord);
 }
 
 // AXIOS SEARCH FUNCTION
@@ -201,31 +213,43 @@ function currentPosition(position) {
   axios.get(apiUrl).then(showWeather);
 }
 
-function showForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let day = date.getDay();
+  return days[day];
+}
+
+function showForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#week-forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["MON", "TUE", "WED", "THU", "FRI"];
-  days.forEach(function (days) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2 weekForcast">
-        <span class="maxfocastTemp" id="forecast-max-temp">20°</span>
-        <span class="minfocastTemp" id="forecast-min-temp">18°</span>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML += `<div class="col-2 weekForcast">
+        <span class="maxfocastTemp" id="forecast-max-temp">${Math.round(
+          forecastDay.temp.max
+        )}°</span>
+        <span class="minfocastTemp" id="forecast-min-temp">${Math.round(
+          forecastDay.temp.min
+        )}°</span>
           <div id="forecast-icon">
             <img
               class="icon"
-              src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-              alt=""
+              src="https://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
+              alt="${forecastDay.weather[0].main}"
              />
             </div>
-          <div id="forecast-day">${days}</div>
+          <div id="forecast-day">${formatDay(forecastDay.dt)}</div>
         </div>`;
+    }
   });
-  forecastHTML = forecastHTML + `</div>`;
+  forecastHTML += `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-showForecast();
 
 document
   .querySelector("#current")
