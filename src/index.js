@@ -92,7 +92,6 @@ function getForecast(coordinates) {
 
 function showWeather(response) {
   // CITY NAME
-  console.log(response.data);
   let city = response.data.name;
   document.querySelector("#city").innerHTML = `${city}`;
 
@@ -133,31 +132,6 @@ function showWeather(response) {
 
   // LAST UPDATED
   formatDate(response.data.dt * 1000);
-
-  //  SUN TIMES
-  console.log(new Date(response.data.sys.sunrise).toUTCString());
-  let secRiseHour = response.data.sys.sunrise;
-  let dateSunRise = new Date(secRiseHour * 1000);
-  let sunRiseH = dateSunRise.getHours();
-  let secRiseMin = response.data.sys.sunrise;
-  let minSunRise = new Date(secRiseMin * 1000);
-  let sunRiseM = minSunRise.getHours();
-  if (sunRiseM > 10) {
-    document.querySelector("#sun-rise").innerHTML = `0${sunRiseH}:${sunRiseM}`;
-  } else {
-    document.querySelector("#sun-rise").innerHTML = `0${sunRiseH}:0${sunRiseM}`;
-  }
-  let secSetHour = response.data.sys.sunset;
-  let dateSunSet = new Date(secSetHour * 1000);
-  let sunSeteH = dateSunSet.getHours();
-  let secSetMin = response.data.sys.sunset;
-  let minSunSet = new Date(secSetMin * 1000);
-  let sunSetM = minSunSet.getHours();
-  if (sunSetM > 10) {
-    document.querySelector("#sun-set").innerHTML = `${sunSeteH}:${sunSetM}`;
-  } else {
-    document.querySelector("#sun-set").innerHTML = `${sunSeteH}:0${sunSetM}`;
-  }
 
   getForecast(response.data.coord);
 }
@@ -221,7 +195,6 @@ function formatDay(timestamp) {
 }
 
 function showForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#week-forecast");
   let forecastHTML = `<div class="row">`;

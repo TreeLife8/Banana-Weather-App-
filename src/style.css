@@ -123,19 +123,10 @@ a {
 .conditions {
   text-align: right;
   padding-right: 5px;
-  font-size: 11px;
+  font-size: 12px;
   font-family: "Roboto", sans-serif;
 }
-.sun {
-  color: #ec6e4c;
-  font-size: 12px;
-}
-.arrow {
-  font-size: 13px;
-}
-.sunRise {
-  padding-top: 4px;
-}
+
 .btn-group {
   display: block;
   margin: 15px auto;
