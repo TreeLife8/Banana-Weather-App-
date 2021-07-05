@@ -100,6 +100,7 @@ a {
 .degrees.active {
   color: rgb(135, 135, 135);
   cursor: default;
+  font-weight: 600;
 }
 
 .lastUpdate {

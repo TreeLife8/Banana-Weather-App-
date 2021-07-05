@@ -228,9 +228,9 @@ function showForecast(response) {
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
       forecastHTML += `<div class="col-2 weekForcast">
-        <span class="maxfocastTemp" id="forecast-max-temp">${Math.round(
+        <span class="maxfocastTemp" id="forecast-max-temp"><strong>${Math.round(
           forecastDay.temp.max
-        )}°</span>
+        )}</strong>°</span>
         <span class="minfocastTemp" id="forecast-min-temp">${Math.round(
           forecastDay.temp.min
         )}°</span>
