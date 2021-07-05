@@ -62,7 +62,7 @@ function changeBackground(time) {
     document.body.style.background =
       "linear-gradient(90.1deg, rgb(167, 220, 225) 11.2%, rgb(217, 239, 242) 88.9%)";
   }
-  if (hours > 17 && hours < 20) {
+  if (hours >= 17 && hours < 20) {
     document.body.style.background =
       "linear-gradient(270.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%)";
   }

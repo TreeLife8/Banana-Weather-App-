@@ -19,11 +19,11 @@ body {
   background: radial-gradient(
     792px at 48.2% 50%,
     rgba(255, 255, 249, 0.6) 0%,
-    rgba(173, 195, 224, 0.8) 74.6%
+    rgb(129, 183, 255) 74.6%
   );
 }
 a {
-  color: #86b7fe;
+  color: #749fdf;
   text-decoration: none;
 }
 .container {
@@ -158,4 +158,14 @@ a {
 .gitHubLink {
   text-align: center;
   font-size: 12px;
+}
+.focastTemp {
+  font-size: 12px;
+}
+.minfocastTemp {
+  font-size: 12px;
+  color: rgba(135, 135, 135, 0.6);
+}
+.icon {
+  max-width: 40px;
 }
