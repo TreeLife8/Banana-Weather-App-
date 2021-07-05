@@ -1,14 +1,11 @@
 // DATE AND TIME
-
 function formatDate(timeStamp) {
   let time = new Date(timeStamp);
   let minutes = time.getMinutes();
   let hours = time.getHours();
-
   if (hours < 10) {
     hours = `0${hours}`;
   }
-
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -23,11 +20,9 @@ function formatDate(timeStamp) {
     "Saturday",
   ];
   let day = days[time.getDay()];
-
   document.querySelector(
     "#day-time"
   ).innerHTML = `<strong>${day}</strong> ${currentTime}`;
-
   let months = [
     "Jan",
     "Feb",
@@ -46,12 +41,10 @@ function formatDate(timeStamp) {
   let date = time.getDate();
   let year = time.getFullYear();
   let currentDate = `${date} ${month} ${year}`;
-
   document.querySelector("#date").innerHTML = `${currentDate}`;
 }
 
 // FORMAT BACKGROUND COLOUR
-
 function changeBackground(time) {
   let hours = time.getHours();
   if (hours > 5 && hours <= 7) {
@@ -79,7 +72,6 @@ function changeBackground(time) {
 }
 
 //  FORECAST DATA
-
 function getForecast(coordinates) {
   let lat = coordinates.lat;
   let lon = coordinates.lon;
@@ -89,16 +81,12 @@ function getForecast(coordinates) {
 }
 
 // WEATHER DATA
-
 function showWeather(response) {
   // CITY NAME
   let city = response.data.name;
   document.querySelector("#city").innerHTML = `${city}`;
-
   // CURRENT FORECAST DISCRIPTION
-
   celciusTemp = response.data.main.temp;
-
   document.querySelector("#current-temp").innerHTML = Math.round(celciusTemp);
   document.querySelector("#forcast").innerHTML =
     response.data.weather[0].description;
@@ -118,7 +106,6 @@ function showWeather(response) {
   document.querySelector("#max-temp").innerHTML = Math.round(
     response.data.main.temp_max
   );
-
   // CONDITIONS
   document.querySelector("#humidity").innerHTML = `${Math.round(
     response.data.main.humidity
@@ -132,7 +119,6 @@ function showWeather(response) {
 
   // LAST UPDATED
   formatDate(response.data.dt * 1000);
-
   getForecast(response.data.coord);
 }
 
@@ -146,7 +132,6 @@ function search(city) {
 search("Sydney");
 
 // UNIT CONVERSION
-
 function convertUnitFehren(event) {
   event.preventDefault();
   document.querySelector("#current-temp").innerHTML = Math.round(
@@ -155,20 +140,17 @@ function convertUnitFehren(event) {
   celcius.classList.remove("active");
   fehren.classList.add("active");
 }
-
 function convertUnitCelcius(event) {
   event.preventDefault();
   document.querySelector("#current-temp").innerHTML = Math.round(celciusTemp);
   fehren.classList.remove("active");
   celcius.classList.add("active");
 }
-
 function searchCurrentLocation() {
   navigator.geolocation.getCurrentPosition(currentPosition);
 }
 
 // SEARCH LOCATION
-
 function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#search-location").value;
@@ -177,7 +159,6 @@ function searchCity(event) {
 }
 
 // CURRENT LOCATION
-
 function currentPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -199,7 +180,7 @@ function showForecast(response) {
   let forecastElement = document.querySelector("#week-forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index > 0 && index < 6) {
       forecastHTML += `<div class="col-2 weekForcast">
         <span class="maxfocastTemp" id="forecast-max-temp"><strong>${Math.round(
           forecastDay.temp.max
