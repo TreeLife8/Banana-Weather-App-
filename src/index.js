@@ -78,91 +78,6 @@ function changeBackground(time) {
   }
 }
 
-changeBackground(new Date());
-
-// WEEK FORCAST DAYS
-
-let time = new Date();
-
-let shortDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-
-let dayOne = time.getDay() + 1;
-if (dayOne > 6) {
-  document.querySelector("#day-one-day").innerHTML =
-    shortDays[time.getDay() - 6];
-} else {
-  document.querySelector("#day-one-day").innerHTML =
-    shortDays[time.getDay() + 1];
-}
-
-let dayTwo = time.getDay() + 2;
-if (dayTwo > 6) {
-  document.querySelector("#day-two-day").innerHTML =
-    shortDays[time.getDay() - 5];
-} else {
-  document.querySelector("#day-two-day").innerHTML =
-    shortDays[time.getDay() + 2];
-}
-
-let dayThree = time.getDay() + 3;
-if (dayThree > 6) {
-  document.querySelector("#day-three-day").innerHTML =
-    shortDays[time.getDay() - 4];
-} else {
-  document.querySelector("#day-three-day").innerHTML =
-    shortDays[time.getDay() + 3];
-}
-
-let dayFour = time.getDay() + 4;
-if (dayFour > 6) {
-  document.querySelector("#day-four-day").innerHTML =
-    shortDays[time.getDay() - 3];
-} else {
-  document.querySelector("#day-four-day").innerHTML =
-    shortDays[time.getDay() + 4];
-}
-
-let dayFive = time.getDay() + 5;
-if (dayFive > 6) {
-  document.querySelector("#day-five-day").innerHTML =
-    shortDays[time.getDay() - 2];
-} else {
-  document.querySelector("#day-five-day").innerHTML =
-    shortDays[time.getDay() + 5];
-}
-
-// SEARCH LOCATION
-
-function searchCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#search-location").value;
-  document.querySelector("#city").innerHTML = `${city}`;
-  search(city);
-}
-
-document
-  .querySelector("#search-city-form")
-  .addEventListener("submit", searchCity);
-
-// CURRENT LOCATION
-
-function currentPosition(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let unit = `metric`;
-  let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
-  axios.get(apiUrl).then(showWeather);
-}
-
-function searchCurrentLocation() {
-  navigator.geolocation.getCurrentPosition(currentPosition);
-}
-
-document
-  .querySelector("#current")
-  .addEventListener("click", searchCurrentLocation);
-
 // WEATHER DATA
 
 function showWeather(response) {
@@ -213,27 +128,21 @@ function showWeather(response) {
   console.log(new Date(response.data.sys.sunrise).toUTCString());
   let secRiseHour = response.data.sys.sunrise;
   let dateSunRise = new Date(secRiseHour * 1000);
-
   let sunRiseH = dateSunRise.getHours();
-
   let secRiseMin = response.data.sys.sunrise;
   let minSunRise = new Date(secRiseMin * 1000);
   let sunRiseM = minSunRise.getHours();
-
   if (sunRiseM > 10) {
     document.querySelector("#sun-rise").innerHTML = `0${sunRiseH}:${sunRiseM}`;
   } else {
     document.querySelector("#sun-rise").innerHTML = `0${sunRiseH}:0${sunRiseM}`;
   }
-
   let secSetHour = response.data.sys.sunset;
   let dateSunSet = new Date(secSetHour * 1000);
   let sunSeteH = dateSunSet.getHours();
-
   let secSetMin = response.data.sys.sunset;
   let minSunSet = new Date(secSetMin * 1000);
   let sunSetM = minSunSet.getHours();
-
   if (sunSetM > 10) {
     document.querySelector("#sun-set").innerHTML = `${sunSeteH}:${sunSetM}`;
   } else {
@@ -268,6 +177,63 @@ function convertUnitCelcius(event) {
   celcius.classList.add("active");
 }
 
+function searchCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(currentPosition);
+}
+
+// SEARCH LOCATION
+
+function searchCity(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-location").value;
+  document.querySelector("#city").innerHTML = `${city}`;
+  search(city);
+}
+
+// CURRENT LOCATION
+
+function currentPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let unit = `metric`;
+  let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
+}
+
+function showForecast() {
+  let forecastElement = document.querySelector("#week-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["MON", "TUE", "WED", "THU", "FRI"];
+  days.forEach(function (days) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2 weekForcast">
+        <span class="maxfocastTemp" id="forecast-max-temp">20°</span>
+        <span class="minfocastTemp" id="forecast-min-temp">18°</span>
+          <div id="forecast-icon">
+            <img
+              class="icon"
+              src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+              alt=""
+             />
+            </div>
+          <div id="forecast-day">${days}</div>
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+showForecast();
+
+document
+  .querySelector("#current")
+  .addEventListener("click", searchCurrentLocation);
+document
+  .querySelector("#search-city-form")
+  .addEventListener("submit", searchCity);
+
 let celciusTemp = null;
 
 let fehren = document.querySelector("#fehren");
@@ -275,3 +241,7 @@ fehren.addEventListener("click", convertUnitFehren);
 
 let celcius = document.querySelector("#celcius");
 celcius.addEventListener("click", convertUnitCelcius);
+
+changeBackground(new Date());
+
+let time = new Date();
