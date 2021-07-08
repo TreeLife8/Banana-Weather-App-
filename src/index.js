@@ -143,7 +143,6 @@ function changeForecastUnits(city) {
 function updatingUnitLocation(response) {
   let unit = `imperial`;
   getForecast(response.data.coord, unit);
-  console.log(response.data.coord);
 }
 
 // UNIT CONVERSION
@@ -155,7 +154,6 @@ function convertUnitFehren(event) {
   celcius.classList.remove("active");
   fehren.classList.add("active");
   let city = document.getElementById("city").innerText;
-  console.log(city);
   changeForecastUnits(city);
 }
 function convertUnitCelcius(event) {
