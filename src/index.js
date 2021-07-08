@@ -72,11 +72,11 @@ function changeBackground(time) {
 }
 
 //  FORECAST DATA
-function getForecast(coordinates) {
+function getForecast(coordinates, unit) {
   let lat = coordinates.lat;
   let lon = coordinates.lon;
   let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showForecast);
 }
 
@@ -116,10 +116,11 @@ function showWeather(response) {
   document.querySelector("#windspeed").innerHTML = `${Math.round(
     response.data.wind.speed
   )} km/h`;
+  let unit = `metric`;
 
   // LAST UPDATED
   formatDate(response.data.dt * 1000);
-  getForecast(response.data.coord);
+  getForecast(response.data.coord, unit);
 }
 
 // AXIOS SEARCH FUNCTION
@@ -131,6 +132,20 @@ function search(city) {
 }
 search("Sydney");
 
+// FORECAST UNIT CONVERSION
+function changeForecastUnits(city) {
+  let unit = `imperial`;
+  let apiKey = `3fb188379e6ffcf616e7cdbd010c6434`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(updatingUnitLocation);
+}
+
+function updatingUnitLocation(response) {
+  let unit = `imperial`;
+  getForecast(response.data.coord, unit);
+  console.log(response.data.coord);
+}
+
 // UNIT CONVERSION
 function convertUnitFehren(event) {
   event.preventDefault();
@@ -139,6 +154,9 @@ function convertUnitFehren(event) {
   );
   celcius.classList.remove("active");
   fehren.classList.add("active");
+  let city = document.getElementById("city").innerText;
+  console.log(city);
+  changeForecastUnits(city);
 }
 function convertUnitCelcius(event) {
   event.preventDefault();
