@@ -193,7 +193,6 @@ function formatDay(timestamp) {
 
 function showForecast(response) {
   let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#week-forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index > 0 && index < 6) {
@@ -218,7 +217,7 @@ function showForecast(response) {
     }
   });
   forecastHTML += `</div>`;
-  forecastElement.innerHTML = forecastHTML;
+  document.querySelector("#week-forecast").innerHTML = forecastHTML;
 }
 
 document
